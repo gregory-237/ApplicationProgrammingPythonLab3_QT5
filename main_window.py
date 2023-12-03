@@ -1,135 +1,148 @@
-# import sys
-#
-# from PyQt5.QtCore import Qt, QEvent
-# from PyQt5.QtGui import QIcon, QPixmap
-# from PyQt5.QtWidgets import *
-#
-#
-# class Window(QMainWindow):
-#     def __init__(self) -> None:
-#         super().__init__()
-#         self.initUI()
-#
-#     def initUI(self) -> None:
-#         self.center()
-#         self.setWindowTitle('Dollar rates')
-#         self.setWindowIcon(QIcon('img/web.png'))
-#         self.centralWidget = QWidget()
-#         self.setCentralWidget(self.centralWidget)
-#         self.show()
-#
-#     def center(self) -> None:
-#         widget_rect = self.frameGeometry()
-#         pc_rect = QDesktopWidget().availableGeometry().center()
-#         widget_rect.moveCenter(pc_rect)
-#         self.move(widget_rect.center())
-#
-#     def closeEvent(self, event) -> None:
-#         reply = QMessageBox.question(self, "Don't leave please(",
-#             "Are you sure to quit?", QMessageBox.Yes |
-#             QMessageBox.No, QMessageBox.No)
-#
-#         if reply == QMessageBox.Yes:
-#             event.accept()
-#         else:
-#             event.ignore()
-#
-#
-#
-# if __name__ == '__main__':
-#     app = QApplication(sys.argv)
-#     window = Window()
-#     sys.exit(app.exec_())
-#
-#
-#
-#
-import sys
-import csv
-from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-class MainWindow(QtWidgets.QMainWindow):
-    def __init__(self):
-        super().__init__()
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(997, 491)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("background-color: white;")
+        self.centralwidget.setObjectName("centralwidget")
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1001, 101))
+        self.frame.setStyleSheet("background-color: #a0a0a0;")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setGeometry(QtCore.QRect(430, 20, 171, 51))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(0, 110, 491, 251))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap("lab3/figure.png"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(590, 110, 321, 41))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("text-align: center;")
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName("label_3")
+        self.input_line = QtWidgets.QLineEdit(self.centralwidget)
+        self.input_line.setGeometry(QtCore.QRect(510, 190, 171, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.input_line.setFont(font)
+        self.input_line.setStyleSheet("border: 2px solid #666666;\n"
+"border-radius: 100;\n"
+"")
+        self.input_line.setText("")
+        self.input_line.setAlignment(QtCore.Qt.AlignCenter)
+        self.input_line.setObjectName("input_line")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(700, 190, 93, 41))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"border: 2px solid #666666;\n"
+"border-radius: 100;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"background-color: #a0a0a0;\n"
+"}")
+        self.pushButton.setObjectName("pushButton")
+        self.output_line = QtWidgets.QLineEdit(self.centralwidget)
+        self.output_line.setGeometry(QtCore.QRect(812, 190, 171, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.output_line.setFont(font)
+        self.output_line.setStyleSheet("border: 2px solid #666666;\n"
+"border-radius: 100;\n"
+"")
+        self.output_line.setText("")
+        self.output_line.setAlignment(QtCore.Qt.AlignCenter)
+        self.output_line.setObjectName("output_line")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(530, 160, 131, 21))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(844, 160, 111, 21))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_5.setObjectName("label_5")
+        self.pushButtonPath = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButtonPath.setGeometry(QtCore.QRect(520, 260, 221, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButtonPath.setFont(font)
+        self.pushButtonPath.setStyleSheet("QPushButton{\n"
+"border: 2px solid #666666;\n"
+"border-radius: 100;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"background-color: #a0a0a0;\n"
+"}")
+        self.pushButtonPath.setObjectName("pushButtonPath")
+        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.comboBox.setGeometry(QtCore.QRect(762, 261, 221, 51))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.comboBox.setFont(font)
+        self.comboBox.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.comboBox.setAutoFillBackground(False)
+        self.comboBox.setStyleSheet("QComboBox{\n"
+"border: 2px solid #666666;\n"
+"border-radius: 100;\n"
+"}")
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        MainWindow.setCentralWidget(self.centralwidget)
 
-        self.setWindowTitle("Dataset Management App")
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.folderpath = None
-        self.dataset = None
-
-        # Widgets
-        self.label = QtWidgets.QLabel("Выберите папку с исходным датасетом:")
-        self.select_folder_button = QtWidgets.QPushButton("Выбрать папку")
-        self.select_folder_button.clicked.connect(self.select_folder)
-
-        self.create_annotation_button = QtWidgets.QPushButton("Создать аннотацию")
-        self.create_annotation_button.clicked.connect(self.create_annotation)
-
-        self.create_dataset_button = QtWidgets.QPushButton("Создать датасет")
-        self.create_dataset_button.clicked.connect(self.create_dataset)
-
-        self.date_input = QtWidgets.QDateEdit()
-        self.date_input.setCalendarPopup(True)
-        self.date_input.setDate(QtCore.QDate.currentDate())
-
-        self.get_data_button = QtWidgets.QPushButton("Получить данные")
-        self.get_data_button.clicked.connect(self.get_data)
-
-        # Layout
-        layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(self.label)
-        layout.addWidget(self.select_folder_button)
-        layout.addWidget(self.create_annotation_button)
-        layout.addWidget(self.create_dataset_button)
-        layout.addWidget(self.date_input)
-        layout.addWidget(self.get_data_button)
-
-        central_widget = QtWidgets.QWidget()
-        central_widget.setLayout(layout)
-        self.setCentralWidget(central_widget)
-
-    def select_folder(self):
-        self.folderpath = QtWidgets.QFileDialog.getExistingDirectory(self, 'Выберите папку')
-        if self.folderpath:
-            QtWidgets.QMessageBox.information(self, 'Папка выбрана', f'Выбрана папка: {self.folderpath}')
-
-    def create_annotation(self):
-        if not self.folderpath:
-            QtWidgets.QMessageBox.warning(self, 'Ошибка', 'Выберите папку с исходным датасетом')
-            return
-
-        destination_file, _ = QtWidgets.QFileDialog.getSaveFileName(self, 'Выберите место для сохранения аннотации', '', 'CSV Files (*.csv);;All Files (*)')
-        if destination_file:
-            annotation_data = [["Дата", "Курс доллара (рубли)"]]
-
-            with open(destination_file, 'w', newline='', encoding='utf-8') as csvfile:
-                csvwriter = csv.writer(csvfile)
-                csvwriter.writerows(annotation_data)
-
-            QtWidgets.QMessageBox.information(self, 'Аннотация создана', f'Аннотация создана и сохранена в {destination_file}')
-
-    def create_dataset(self):
-        if not self.folderpath:
-            QtWidgets.QMessageBox.warning(self, 'Ошибка', 'Выберите папку с исходным датасетом')
-            return
-
-        destination_folder = QtWidgets.QFileDialog.getExistingDirectory(self, 'Выберите папку для нового датасета')
-        if destination_folder:
-            # Здесь нужно добавить логику создания нового датасета и его аннотации
-            QtWidgets.QMessageBox.information(self, 'Датасет создан', f'Датасет создан и сохранен в {destination_folder}')
-
-    def get_data(self):
-        if not self.folderpath:
-            QtWidgets.QMessageBox.warning(self, 'Ошибка', 'Выберите папку с исходным датасетом')
-            return
-
-        selected_date = self.date_input.date().toString(QtCore.Qt.ISODate)
-        # Здесь нужно добавить логику получения данных для выбранной даты и их отображения в интерфейсе
-        QtWidgets.QMessageBox.information(self, 'Данные получены', f'Данные для {selected_date} получены и отображены в интерфейсе')
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec_())
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "Курс Доллара"))
+        self.label_3.setText(_translate("MainWindow", "Узнать курс за определенный день"))
+        self.pushButton.setText(_translate("MainWindow", "ТЫК"))
+        self.label_4.setText(_translate("MainWindow", "ДАТА"))
+        self.label_5.setText(_translate("MainWindow", "ЗНАЧЕНИЕ"))
+        self.pushButtonPath.setText(_translate("MainWindow", "Выберите папку"))
+        self.comboBox.setItemText(0, _translate("MainWindow", "dataset"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "X и Y"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "разбивка по годам"))
+        self.comboBox.setItemText(3, _translate("MainWindow", "разбивка по неделям"))
